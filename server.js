@@ -66,6 +66,98 @@ app.delete('/api/mahasiswa/:id', (req,res) => {
     })
 })
 
+app.get('/api/dosen', (req, res) => {
+  db.query('SELECT * FROM dosen', (err, result) => {
+    if (err) throw err
+    res.json(result)
+  })
+})
+
+app.post('/api/dosen', (req, res) => {
+  const { nama, nidn, prodi, fakultas } = req.body
+  db.query(
+    'INSERT INTO dosen (nama,nidn,prodi,fakultas) VALUES (?,?,?,?)',
+    [nama, nidn, prodi, fakultas],
+    (err) => {
+      if (err) throw err
+      res.json({ message: 'Data dosen ditambahkan' })
+    }
+  )
+})
+
+app.delete('/api/dosen/:id', (req, res) => {
+  db.query('DELETE FROM dosen WHERE id=?', [req.params.id], (err) => {
+    if (err) throw err
+    res.json({ message: 'Data dihapus' })
+  })
+})
+
+app.get('/api/dosen', (req, res) => {
+  db.query('SELECT * FROM dosen', (err, result) => {
+    if (err) throw err
+    res.json(result)
+  })
+})
+
+app.post('/api/dosen', (req, res) => {
+  const { nama, nidn, prodi, fakultas } = req.body
+  db.query(
+    'INSERT INTO dosen (nama,nidn,prodi,fakultas) VALUES (?,?,?,?)',
+    [nama, nidn, prodi, fakultas],
+    (err) => {
+      if (err) throw err
+      res.json({ message: 'Data dosen ditambahkan' })
+    }
+  )
+})
+
+//================MATKUL================
+
+app.get('/api/matkul', (req, res) => {
+  db.query('SELECT * FROM matkul', (err, result) => {
+    if (err) throw err
+    res.json(result)
+  })
+})
+
+app.post('/api/matkul', (req, res) => {
+  const { nama, kode, sks, jadwal, jam } = req.body
+  db.query(
+    'INSERT INTO matkul (nama,kode,sks,jadwal,jam) VALUES (?,?,?,?,?)',
+    [nama, kode, sks, jadwal, jam],
+    (err) => {
+      if (err) throw err
+      res.json({ message: 'Data matkul ditambahkan' })
+    }
+  )
+})
+
+app.delete('/api/matkul/:id', (req, res) => {
+  db.query('DELETE FROM matkul WHERE id=?', [req.params.id], (err) => {
+    if (err) throw err
+    res.json({ message: 'Data dihapus' })
+  })
+})
+
+app.get('/api/matkul', (req, res) => {
+  db.query('SELECT * FROM matkul', (err, result) => {
+    if (err) throw err
+    res.json(result)
+  })
+})
+
+app.post('/api/matkul', (req, res) => {
+  const { nama, kode, sks, jadwal, jam } = req.body
+  db.query(
+    'INSERT INTO matkul (nama,kode,sks,jadwal,jam) VALUES (?,?,?,?,?)',
+    [nama, kode, sks, jadwal, jam],
+    (err) => {
+      if (err) throw err
+      res.json({ message: 'Data matkul ditambahkan' })
+    }
+  )
+})
+
 app.listen(PORT, () => {
     console.log(`Server API berjalan di http://localhost:${PORT}`)
 })
